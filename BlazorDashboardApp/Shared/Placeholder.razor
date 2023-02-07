@@ -1,0 +1,31 @@
+﻿<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">@Title</h5>
+    <div class="card-text">
+            <ApexChart TItem="Order"
+                       Title="Order Gross Value">
+
+                <ApexPointSeries TItem="Order"
+                                 Items="Orders"
+                                 Name="Gross Value"
+                                 SeriesType="SeriesType.Pie"
+                                 XValue="@(e => e.Country)"
+                                 YAggregate="@(e => e.Sum(e => e.GrossValue))"
+                                 OrderByDescending="e=>e.Y" />
+            </ApexChart>
+    </div>
+  </div>
+</div>
+
+@code {
+    class Order
+    {
+        public string Country { get; set; } = "LV";
+        public decimal GrossValue { get; set; } = 100;
+    }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    private List<Order> Orders { get; set; } = new List<Order>() { new Order() };
+}
