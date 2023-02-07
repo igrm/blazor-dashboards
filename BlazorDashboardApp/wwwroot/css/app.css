@@ -1,6 +1,10 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 * {outline: 0px dotted red !important;}
 
+.resizable {
+    resize: both;
+    overflow: auto;
+}
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
